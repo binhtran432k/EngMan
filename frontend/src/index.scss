@@ -1,0 +1,24 @@
+$bsprefix: --bs;
+
+@import "react-bootstrap-submenu/dist/index.css";
+
+.carousel {
+  &-control-next-icon,
+  &-control-prev-icon {
+    filter: invert(1) grayscale(100) !important;
+    [data-bs-theme="dark"] & {
+      filter: grayscale(100) !important;
+    }
+  }
+  &-indicators [data-bs-target] {
+    background-color: var(#{$bsprefix}-body-color) !important;
+  }
+  &-caption {
+    background-color: rgba(var(#{$bsprefix}-body-bg-rgb), 0.8) !important;
+    border-radius: var(#{$bsprefix}-border-radius) !important;
+    &,
+    h3 {
+      color: var(#{$bsprefix}-body-color) !important;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+export default {
+  common: {
+    logIn: "Log in",
+    signUp: "Sign up",
+    myLearning: "My learning",
+    instructor: "Instructor",
+    academy: "Academy",
+    searching: "Search for anything",
+    navbar: "Navbar",
+    search: "Search",
+    loginLabel: "Log in to your EngMan account",
+    category: {
+      label: "Category",
+      examPreparation: "{{name}} Exam Preparation",
+      preparation: "{{name}} Preparation",
+      level: "{{name}} Level",
+      oneOn1: "1 on 1",
+      foundation: "Course Foundation",
+      ielts: "IELTS",
+      toeic: "TOEIC",
+      toeicSW: "TOEIC Speaking and Writing",
+      communication: "Communication",
+      vstep: "VSTEP.3-5",
+      pte: "PTE",
+      ieltsJunior: "IELTS Junior",
+      pre: "Pre-{{name}}",
+    },
+    beginner: "Beginner",
+    foundation: "Foundation",
+    intermediate: "Intermediate",
+    advanced: "Intermediate",
+    master: "Master",
+    form: {
+      username: "Username",
+      password: "Password",
+    },
+  },
+  validation: {
+    loginFail: {
+      label: "Login failed",
+      message: "Username or Password is wrong"
+    },
+  },
+  glossary: {},
+};

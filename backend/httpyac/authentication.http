@@ -1,0 +1,31 @@
+@defaultPassword = 12345678As
+
+###
+# @name authenticateAsUserSuccess
+POST /auth
+Content-Type: application/json
+
+{
+  "username": "student",
+  "password": "{{defaultPassword}}"
+}
+###
+# @name authenticateAsAdminSuccess
+POST /auth/admin
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "{{defaultPassword}}"
+}
+###
+# @ref authenticateAsUserSuccess
+# @name refreshTokenAsUserSuccess
+POST /auth/refresh
+Authorization: Bearer {{authenticateAsUserSuccess.token}}
+###
+# @ref authenticateAsAdminSuccess
+# @name refreshTokenAsAdminSuccess
+POST /auth/refresh
+Authorization: Bearer {{authenticateAsAdminSuccess.token}}
+###

@@ -1,0 +1,212 @@
+{
+  "ielts": [
+    { "id": "foundationCourse", "code": "category.foundation", "option": {} },
+    {
+      "id": "pre",
+      "code": "category.preparation",
+      "option": {
+        "name": "$t(category.pre, {\"name\": \"IELTS\"})",
+        "interpolation": {
+          "escapeValue": false
+        }
+      }
+    },
+    {
+      "id": "fourDot5",
+      "code": "category.preparation",
+      "option": { "name": "4.5 IELTS" }
+    },
+    {
+      "id": "fiveDot5",
+      "code": "category.preparation",
+      "option": { "name": "5.5 IELTS" }
+    },
+    {
+      "id": "sixDot5",
+      "code": "category.preparation",
+      "option": { "name": "6.5 IELTS" }
+    },
+    {
+      "id": "sevenDot5",
+      "code": "category.preparation",
+      "option": { "name": "7.5 IELTS" }
+    },
+    {
+      "id": "oneOn1",
+      "code": "category.preparation",
+      "option": {
+        "name": "IELTS $t(category.oneOn1)"
+      }
+    },
+    {
+      "id": "examFoundation",
+      "code": "category.examPreparation",
+      "option": { "name": "$t(beginner)" }
+    },
+    {
+      "id": "examAdvanced",
+      "code": "category.examPreparation",
+      "option": { "name": "$t(advanced)" }
+    }
+  ],
+  "toeic": [
+    { "id": "foundationCourse", "code": "category.foundation", "option": {} },
+    {
+      "id": "three05",
+      "code": "category.preparation",
+      "option": { "name": "TOEIC 350" }
+    },
+    {
+      "id": "four05",
+      "code": "category.preparation",
+      "option": { "name": "TOEIC 450" }
+    },
+    {
+      "id": "five05",
+      "code": "category.preparation",
+      "option": { "name": "TOEIC 550" }
+    },
+    {
+      "id": "six05",
+      "code": "category.preparation",
+      "option": { "name": "TOEIC 650" }
+    },
+    {
+      "id": "seven05",
+      "code": "category.preparation",
+      "option": { "name": "TOEIC 750" }
+    },
+    {
+      "id": "examFoundation",
+      "code": "category.examPreparation",
+      "option": { "name": "$t(beginner)" }
+    },
+    {
+      "id": "examAdvanced",
+      "code": "category.examPreparation",
+      "option": { "name": "$t(advanced)" }
+    }
+  ],
+  "toeicSW": [
+    { "id": "foundationCourse", "code": "category.foundation", "option": {} },
+    {
+      "id": "two40",
+      "code": "category.preparation",
+      "option": { "name": "TOEIC SW 240" }
+    },
+    {
+      "id": "three00",
+      "code": "category.preparation",
+      "option": { "name": "TOEIC SW 300" }
+    }
+  ],
+  "communication": [
+    {
+      "id": "beginner",
+      "code": "category.level",
+      "option": { "name": "$t(beginner)" }
+    },
+    {
+      "id": "foundation",
+      "code": "category.level",
+      "option": { "name": "$t(foundation)" }
+    },
+    {
+      "id": "intermediate",
+      "code": "category.level",
+      "option": { "name": "$t(intermediate)" }
+    },
+    {
+      "id": "advanced",
+      "code": "category.level",
+      "option": { "name": "$t(advanced)" }
+    },
+    {
+      "id": "master",
+      "code": "category.level",
+      "option": { "name": "$t(master)" }
+    }
+  ],
+  "vstep": [
+    { "id": "foundationCourse", "code": "category.foundation", "option": {} },
+    {
+      "id": "pre",
+      "code": "category.level",
+      "option": {
+        "name": "$t(category.pre, {\"name\": \"VSTEP\"})",
+        "interpolation": {
+          "escapeValue": false
+        }
+      }
+    },
+    { "id": "b1", "code": "category.level", "option": { "name": "B1" } },
+    { "id": "b2", "code": "category.level", "option": { "name": "B2" } },
+    { "id": "c1", "code": "category.level", "option": { "name": "C1" } }
+  ],
+  "pte": [
+    { "id": "foundationCourse", "code": "category.foundation", "option": {} },
+    {
+      "id": "pre",
+      "code": "category.level",
+      "option": {
+        "name": "$t(category.pre, {\"name\": \"PTE\"})",
+        "interpolation": {
+          "escapeValue": false
+        }
+      }
+    },
+    {
+      "id": "foundation",
+      "code": "category.level",
+      "option": { "name": "$t(foundation)" }
+    },
+    {
+      "id": "intermediate",
+      "code": "category.level",
+      "option": { "name": "$t(intermediate)" }
+    },
+    {
+      "id": "advanced",
+      "code": "category.level",
+      "option": { "name": "$t(advanced)" }
+    },
+    {
+      "id": "master",
+      "code": "category.level",
+      "option": { "name": "$t(master)" }
+    }
+  ],
+  "ieltsJunior": [
+    { "id": "foundationCourse", "code": "category.foundation", "option": {} },
+    {
+      "id": "pre",
+      "code": "category.level",
+      "option": {
+        "name": "$t(category.pre, {\"name\": \"IElTS\"})",
+        "interpolation": {
+          "escapeValue": false
+        }
+      }
+    },
+    {
+      "id": "foundation",
+      "code": "category.level",
+      "option": { "name": "$t(foundation)" }
+    },
+    {
+      "id": "intermediate",
+      "code": "category.level",
+      "option": { "name": "$t(intermediate)" }
+    },
+    {
+      "id": "advanced",
+      "code": "category.level",
+      "option": { "name": "$t(advanced)" }
+    },
+    {
+      "id": "master",
+      "code": "category.level",
+      "option": { "name": "$t(master)" }
+    }
+  ]
+}

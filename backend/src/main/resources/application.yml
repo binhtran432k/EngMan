@@ -1,0 +1,30 @@
+database: h2
+spring:
+  h2:
+    console:
+      enabled: "true"
+  sql:
+    init:
+      # schema-locations: "classpath*:db/${database}/schema.sql"
+      # data-locations: "classpath*:db/${database}/data.sql"
+      # mode: always
+  datasource:
+    url: "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL"
+    username: sa
+    password: password
+  jpa:
+    show-sql: true
+    open_in_view: true
+    hibernate:
+      ddl-auto: "create-drop" # update | create | create-drop | validate | none
+    # automate generation schema for validation
+    # properties:
+    #   javax:
+    #     persistence:
+    #       schema-generation:
+    #         create-source: metadata
+    #         drop-source: metadata
+    #         scripts:
+    #           action: drop-and-create
+    #           create-target: dropcreate.sql
+    #           drop-target: dropcreate.sql

@@ -1,0 +1,36 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "The test for Engman System",
+  "main": "index.js",
+  "scripts": {
+    "api": "DEBUG=pw:api cucumber-js",
+    "debug": "PWDEBUG=1 DEBUG=pw:api cucumber-js",
+    "video": "PWVIDEO=1 cucumber-js",
+    "only": "cucumber-js --tags @only",
+    "video-only": "PWVIDEO=1 cucumber-js --tags @only",
+    "snippets": "cucumber-js features/**/*.feature --dry-run --format snippets",
+    "steps-usage": "cucumber-js features/**/*.feature --dry-run",
+    "all": "cucumber-js features/**/*.feature",
+    "test": "cucumber-js",
+    "test:parallel": "cucumber-js --parallel=2",
+    "allure": "allure serve reports/allure-results"
+  },
+  "keywords": [],
+  "author": "Tran Duc binh",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.32.3",
+    "@types/fs-extra": "^11.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^9.1.0",
+    "@cucumber/html-formatter": "^20.3.0",
+    "@cucumber/messages": "^22.0.0",
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "allure-cucumberjs": "^2.1.0",
+    "fs-extra": "^11.1.1"
+  }
+}

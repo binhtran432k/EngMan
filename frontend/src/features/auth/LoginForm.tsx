@@ -1,4 +1,8 @@
-import { LoginRequest, useCreateAdminAuthMutation, useCreateAuthMutation } from "@/app/services/auth";
+import {
+  LoginRequest,
+  useCreateAdminAuthMutation,
+  useCreateAuthMutation,
+} from "@/app/services/auth";
 import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -31,7 +35,8 @@ function LoginForm({ redirect, needAdmin = false }: LoginFormProps) {
     setFormState((prev) => ({ ...prev, [name]: value }));
 
   const [login, { isLoading }] = useCreateAuthMutation();
-  const [loginAsAdmin, { isLoading: isLoadingAdmin }] = useCreateAdminAuthMutation();
+  const [loginAsAdmin, { isLoading: isLoadingAdmin }] =
+    useCreateAdminAuthMutation();
   const realLogin = needAdmin ? loginAsAdmin : login;
   const realIsLoading = needAdmin ? isLoadingAdmin : isLoading;
 
@@ -57,6 +62,7 @@ function LoginForm({ redirect, needAdmin = false }: LoginFormProps) {
       <Form.Group>
         <Form.Label>{t("form.username")}</Form.Label>
         <Form.Control
+          className="txtUsername"
           onChange={handleChange}
           name="username"
           placeholder={t("form.username") ?? "Username"}
@@ -66,6 +72,7 @@ function LoginForm({ redirect, needAdmin = false }: LoginFormProps) {
         <Form.Label>{t("form.password")}</Form.Label>
         <InputGroup>
           <Form.Control
+            className="txtPassword"
             onChange={handleChange}
             name="password"
             type={isShowPassword ? "text" : "password"}
@@ -76,7 +83,7 @@ function LoginForm({ redirect, needAdmin = false }: LoginFormProps) {
           </Button>
         </InputGroup>
       </Form.Group>
-      <Button disabled={realIsLoading} type="submit">
+      <Button className="btnLogin" disabled={realIsLoading} type="submit">
         {t("logIn")}
       </Button>
     </Form>

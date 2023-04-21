@@ -144,9 +144,9 @@ function MyNavbar() {
                   <FaBell />
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item className="user">
+              <Nav.Item>
                 <Dropdown align="end">
-                  <Dropdown.Toggle as={Nav.Link} className="pe-0">
+                  <Dropdown.Toggle className="btnUserAction pe-0" as={Nav.Link}>
                     <UserIcon
                       firstName={user.firstName}
                       lastName={user.lastName}
@@ -155,9 +155,10 @@ function MyNavbar() {
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item
+                      className="btnLogout"
                       onClick={() => {
                         dispatch(unsetCredentials());
-                        navigate("/");
+                        navigate("/login");
                       }}
                     >
                       Logout
@@ -169,7 +170,7 @@ function MyNavbar() {
           ) : (
             <Nav.Item>
               <LinkContainer to="/login">
-                <Button>{t("logIn")}</Button>
+                <Button className="btnLoginNavigation">{t("logIn")}</Button>
               </LinkContainer>
             </Nav.Item>
           )}

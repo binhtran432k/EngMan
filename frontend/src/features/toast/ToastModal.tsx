@@ -10,7 +10,7 @@ function ToastModal() {
       <Modal.Header closeButton>
         <Modal.Title>{toast.title}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{toast.body}</Modal.Body>
+      <Modal.Body className="lblModalMessage">{toast.body}</Modal.Body>
       {toast.footer && <Modal.Footer>{toast.footer}</Modal.Footer>}
     </Modal>
   );

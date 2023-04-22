@@ -1,11 +1,11 @@
-package io.github.engman.security;
+package io.github.engman.authentication;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import io.github.engman.repository.UserRepository;
+import io.github.engman.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service

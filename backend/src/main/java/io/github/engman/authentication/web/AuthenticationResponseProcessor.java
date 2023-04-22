@@ -1,4 +1,4 @@
-package io.github.engman.web;
+package io.github.engman.authentication.web;
 
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.hateoas.EntityModel;

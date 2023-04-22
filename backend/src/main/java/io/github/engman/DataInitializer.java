@@ -6,9 +6,9 @@ import java.util.stream.Stream;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import io.github.engman.domain.User;
-import io.github.engman.domain.UserRole;
-import io.github.engman.repository.UserRepository;
+import io.github.engman.user.User;
+import io.github.engman.user.UserRepository;
+import io.github.engman.user.UserRole;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

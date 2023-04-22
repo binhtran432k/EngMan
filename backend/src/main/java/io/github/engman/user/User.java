@@ -1,4 +1,4 @@
-package io.github.engman.domain;
+package io.github.engman.user;
 
 import java.util.ArrayList;
 import java.util.Collection;

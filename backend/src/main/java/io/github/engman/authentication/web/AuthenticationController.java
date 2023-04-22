@@ -1,4 +1,4 @@
-package io.github.engman.web;
+package io.github.engman.authentication.web;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.engman.domain.User;
-import io.github.engman.domain.UserRole;
-import io.github.engman.security.jwt.JwtTokenProvider;
+import io.github.engman.authentication.jwt.JwtTokenProvider;
+import io.github.engman.user.User;
+import io.github.engman.user.UserRole;
 import lombok.RequiredArgsConstructor;
 
 @RestController

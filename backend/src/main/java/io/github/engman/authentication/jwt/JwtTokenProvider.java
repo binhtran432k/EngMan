@@ -1,4 +1,4 @@
-package io.github.engman.security.jwt;
+package io.github.engman.authentication.jwt;
 
 import static java.util.stream.Collectors.joining;
 
@@ -15,9 +15,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
-import io.github.engman.domain.User;
-import io.github.engman.security.MyUserDetails;
-import io.github.engman.utility.AuthenticationUtility;
+import io.github.engman.authentication.AuthenticationUtility;
+import io.github.engman.authentication.MyUserDetails;
+import io.github.engman.user.User;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

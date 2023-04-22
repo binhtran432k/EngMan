@@ -1,4 +1,4 @@
-package io.github.engman.security.jwt;
+package io.github.engman.authentication.jwt;
 
 import java.io.IOException;
 

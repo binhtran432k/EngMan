@@ -1,4 +1,4 @@
-package io.github.engman.utility;
+package io.github.engman.authentication;
 
 import java.util.Collection;
 

@@ -1,4 +1,4 @@
-package io.github.engman.config;
+package io.github.engman.configiguration;
 
 import java.util.Arrays;
 
@@ -24,9 +24,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import io.github.engman.security.jwt.JwtTokenAuthenticationFilter;
-import io.github.engman.security.jwt.JwtTokenProvider;
-import io.github.engman.utility.AuthenticationUtility;
+
+import io.github.engman.authentication.AuthenticationUtility;
+import io.github.engman.authentication.jwt.JwtTokenAuthenticationFilter;
+import io.github.engman.authentication.jwt.JwtTokenProvider;
 
 @Configuration
 public class SecurityConfig {

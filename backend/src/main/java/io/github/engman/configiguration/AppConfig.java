@@ -1,4 +1,4 @@
-package io.github.engman.config;
+package io.github.engman.configiguration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

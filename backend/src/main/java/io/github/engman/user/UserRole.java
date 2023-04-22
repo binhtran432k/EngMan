@@ -1,4 +1,4 @@
-package io.github.engman.domain;
+package io.github.engman.user;
 
 import org.springframework.security.core.GrantedAuthority;
 

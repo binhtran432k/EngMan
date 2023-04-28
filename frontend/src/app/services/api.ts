@@ -1,3 +1,4 @@
+import { ValidationString } from "@/locales/i18n";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 
@@ -16,5 +17,9 @@ const api = createApi({
   }),
   endpoints: () => ({}),
 });
+type ApiError = [ValidationString, ValidationString];
+const DEFAULT_API_ERROR: ApiError = ["system.title", "system.message"];
 
+export { DEFAULT_API_ERROR };
+export type { ApiError };
 export default api;

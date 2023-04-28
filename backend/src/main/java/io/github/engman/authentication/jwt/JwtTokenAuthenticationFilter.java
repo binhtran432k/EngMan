@@ -16,10 +16,8 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
-@Slf4j
 public class JwtTokenAuthenticationFilter extends GenericFilterBean {
 
 	public static final String HEADER_PREFIX = "Bearer ";
@@ -30,7 +28,6 @@ public class JwtTokenAuthenticationFilter extends GenericFilterBean {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain)
 			throws IOException, ServletException {
 		String token = resolveToken((HttpServletRequest) req);
-		log.info("Extracting token from HttpServletRequest: {}", token);
 
 		if (token != null) {
 			Authentication auth = jwtTokenProvider.getAuthentication(token);

@@ -6,7 +6,7 @@ class UserActionPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.btnLogout = page.locator(".btnLogout");
+    this.btnLogout = page.locator(".MyDropdown .btnLogout");
   }
 
   async clickLogout() {

@@ -1,6 +1,6 @@
-import { selectCurrentUser } from "@/features/auth/authSlice";
 import { useTypedSelector } from "@/hooks/store";
 import { ReactNode } from "react";
+import { selectCurrentUser } from "./authSlice";
 
 interface RoleBaseComponentProps {
   role: string;

@@ -1,42 +1,38 @@
-package io.github.engman.configiguration;
+package io.github.engman.authentication;
 
 import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import io.github.engman.authentication.AuthenticationUtility;
 import io.github.engman.authentication.jwt.JwtTokenAuthenticationFilter;
 import io.github.engman.authentication.jwt.JwtTokenProvider;
+import io.github.engman.core.exception.CustomException;
 
 @Configuration
-public class SecurityConfig {
+@EnableMethodSecurity
+public class SecurityConfiguration {
 
 	@Bean
-	WebSecurityCustomizer webSecurityCustomizer() {
-		return web -> web.ignoring()
-				.requestMatchers(new AntPathRequestMatcher("/h2-console/**"))
-				.requestMatchers(new AntPathRequestMatcher("/explorer/**")); // for hal explorer
+	public PasswordEncoder passwordEncoder() {
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 
 	@Bean
@@ -59,17 +55,6 @@ public class SecurityConfig {
 				.csrf(AbstractHttpConfigurer::disable)
 				.sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.exceptionHandling(c -> c.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
-				.authorizeHttpRequests(authorize -> authorize
-						.requestMatchers("/").permitAll()
-						.requestMatchers(HttpMethod.POST, "/auth").permitAll()
-						.requestMatchers(HttpMethod.POST, "/auth/admin").permitAll()
-						.requestMatchers("/users/**").permitAll()
-						.requestMatchers("/profile/**").permitAll()
-						// .requestMatchers(HttpMethod.GET, "/vehicles/**").permitAll()
-						// .requestMatchers(HttpMethod.DELETE,
-						// "/vehicles/**").hasAnyAuthority(UserRole.ROLE_ADMIN.name())
-						// .requestMatchers(HttpMethod.GET, "/v1/vehicles/**").permitAll()
-						.anyRequest().authenticated())
 				.addFilterBefore(new JwtTokenAuthenticationFilter(tokenProvider),
 						UsernamePasswordAuthenticationFilter.class)
 				.build();
@@ -84,11 +69,11 @@ public class SecurityConfig {
 			UserDetails user = userDetailsService.loadUserByUsername(username);
 
 			if (!encoder.matches(password, user.getPassword())) {
-				throw new BadCredentialsException("Bad credentials");
+				throw new CustomException(HttpStatus.BAD_REQUEST);
 			}
 
 			if (!user.isEnabled()) {
-				throw new DisabledException("User account is not active");
+				throw new CustomException(HttpStatus.NOT_FOUND);
 			}
 
 			return AuthenticationUtility.getAuthenticationWithUserDetails(username, null, user.getAuthorities(), user);

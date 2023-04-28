@@ -1,12 +1,14 @@
 import { Button, Form, InputGroup } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
 import { FaSearch } from "react-icons/fa";
 
-const SearchBox = () => {
-  const { t } = useTranslation();
+interface SearchBoxProps {
+  placeholder: string;
+}
+
+const SearchBox = (props: SearchBoxProps) => {
   return (
     <InputGroup>
-      <Form.Control placeholder={t("searching")!} />
+      <Form.Control placeholder={props.placeholder} />
       <Button className="d-flex align-items-center">
         <FaSearch />
       </Button>

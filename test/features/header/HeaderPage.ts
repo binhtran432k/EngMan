@@ -7,11 +7,11 @@ class NavbarPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.btnUserAction = page.locator(".btnUserAction");
+    this.btnUserAction = page.locator(".btnUserMenuToggle");
     this.btnLoginNavigation = page.locator(".btnLoginNavigation");
   }
 
-  async clickUserAction() {
+  async clickUserMenu() {
     this.btnUserAction.click();
   }
 

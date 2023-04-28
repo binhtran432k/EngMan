@@ -1,10 +1,14 @@
 interface UserIconProps {
-  firstName: string;
-  lastName: string;
+  username: string;
+  firstName?: string;
+  lastName?: string;
   size: string;
 }
 
 function UserIcon(props: UserIconProps) {
+  const name =
+    [props.firstName?.[0], props.lastName?.[0]].filter(Boolean).join("") ||
+    props.username[0];
   return (
     <svg
       viewBox="0 0 100 100"
@@ -23,7 +27,7 @@ function UserIcon(props: UserIconProps) {
           dominantBaseline="central"
           textAnchor="middle"
         >
-          {(props.firstName[0] + props.lastName[0]).toUpperCase()}
+          {name.toUpperCase()}
         </text>
       </g>
     </svg>

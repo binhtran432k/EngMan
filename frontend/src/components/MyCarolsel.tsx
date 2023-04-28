@@ -27,7 +27,7 @@ function getCarolselItems(items: CarouselItem[]) {
 
 function MyCarolsel() {
   return (
-    <CarouselBS className="my-carousel mx-auto">
+    <CarouselBS className="MyCarolsel mx-auto">
       {getCarolselItems([
         {
           image: welcomeImgSrc,

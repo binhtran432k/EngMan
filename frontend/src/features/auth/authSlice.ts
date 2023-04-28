@@ -1,11 +1,11 @@
-import { User } from "@/app/services/auth";
+import { AuthDetails } from "@/app/services/auth";
 import { RootState } from "@/app/store";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import jwtDecode from "jwt-decode";
 
 interface AuthState {
-  user: User | null;
+  user: AuthDetails | null;
   token: string | null;
 }
 
@@ -31,7 +31,7 @@ const TokenUtility = {
   },
 } as const;
 
-function getUserFromToken(token: string | null): User | null {
+function getUserFromToken(token: string | null): AuthDetails | null {
   if (token) {
     const decodedJwt = jwtDecode<AuthToken>(token);
     return {
@@ -53,7 +53,7 @@ const slice = createSlice({
   name: "auth",
   initialState: { user: user, token: userToken } as AuthState,
   reducers: {
-    setCredentials: (state, { payload: user }: PayloadAction<User>) => {
+    setCredentials: (state, { payload: user }: PayloadAction<AuthDetails>) => {
       TokenUtility.save(user.token);
       state.user = user;
       state.token = user.token;

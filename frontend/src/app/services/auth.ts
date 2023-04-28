@@ -1,11 +1,16 @@
-import api from "./api";
+import api, { ApiError, DEFAULT_API_ERROR } from "./api";
+import * as yup from "yup";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
+import HttpStatus from "@/constants/HttpStatus";
 
-interface LoginRequest {
-  username: string;
-  password: string;
-}
+const authSchema = yup.object({
+  username: yup.string().required("username.required"),
+  password: yup.string().required("password.required"),
+});
 
-interface User {
+type LoginRequest = yup.InferType<typeof authSchema>;
+
+interface AuthDetails {
   username: string;
   firstName: string;
   lastName: string;
@@ -13,16 +18,16 @@ interface User {
   token: string;
 }
 
-const authSlice = api.injectEndpoints({
+const authService = api.injectEndpoints({
   endpoints: (build) => ({
-    createAuth: build.mutation<User, LoginRequest>({
+    createAuth: build.mutation<AuthDetails, LoginRequest>({
       query: (credentials) => ({
         url: "auth",
         method: "POST",
         body: credentials,
       }),
     }),
-    createAdminAuth: build.mutation<User, LoginRequest>({
+    createAdminAuth: build.mutation<AuthDetails, LoginRequest>({
       query: (credentials) => ({
         url: "auth/admin",
         method: "POST",
@@ -33,6 +38,15 @@ const authSlice = api.injectEndpoints({
   overrideExisting: false,
 });
 
-export type { User, LoginRequest };
-export const { useCreateAuthMutation, useCreateAdminAuthMutation } = authSlice;
-export default authSlice;
+function getLoginError(error?: FetchBaseQueryError): ApiError {
+  if (error?.status === HttpStatus.NOT_FOUND) {
+    return ["login.title", "login.message"];
+  }
+  return DEFAULT_API_ERROR;
+}
+
+export type { AuthDetails, LoginRequest };
+export { authSchema, getLoginError };
+export const { useCreateAuthMutation, useCreateAdminAuthMutation } =
+  authService;
+export default authService;

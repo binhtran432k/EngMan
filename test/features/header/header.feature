@@ -1,5 +1,6 @@
 # language: vi
-Tính năng: Điều hướng người dùng
+@Header
+Tính năng: Sử dụng thanh tiêu đề
 
   Tình huống: Mở trang đăng nhập
     Biết tôi chưa đăng nhập vào hệ thống
@@ -10,5 +11,6 @@ Tính năng: Điều hướng người dùng
   Tình huống: Đăng xuất khỏi hệ thống
     Biết tôi đã đăng nhập vào hệ thống với quyền "mặc định"
     Và tôi đang ở "trang chủ"
-    Khi tôi nhấn vào đăng xuất
+    Khi tôi nhấn vào nút người dùng
+    Và tôi nhấn vào đăng xuất
     Thì tôi bị chuyển hướng về "trang đăng nhập"

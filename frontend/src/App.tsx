@@ -1,53 +1,83 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import PrivateRoute from "./components/PrivateComponent";
-import RoleBaseComponent from "./components/RoleBaseComponent";
+import AuthRoute from "./features/auth/AuthRoute";
+import PrivateRoute from "./features/auth/PrivateRoute";
+import RoleBaseComponent from "./features/auth/RoleBaseComponent";
 import ToastModal from "./features/toast/ToastModal";
 import Admin from "./layouts/Admin";
 import Normal from "./layouts/Normal";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 const Roles = {
   Admin: "ROLE_ADMIN",
   Instructor: "ROLE_INSTRUCTOR",
   Academy: "ROLE_ACADEMY",
   Basic: "ROLE_BASIC",
-};
+} as const;
 
-const LOGIN_URL = "/login";
-const ADMIN_LOGIN_URL = "/admin/login";
-const HOME_URL = "/";
+const Endpoints = {
+  index: "/",
+  Login: "/login",
+  Register: "/register",
+  Admin: {
+    index: "/admin",
+    Login: "/admin/login",
+  },
+} as const;
 
 const router = createBrowserRouter([
   {
-    path: HOME_URL,
+    path: Endpoints.index,
     element: (
-      <Normal>
+      <Normal homeUrl={Endpoints.index} loginUrl={Endpoints.Login}>
         <Outlet />
       </Normal>
     ),
     children: [
       {
-        path: "",
+        path: Endpoints.index,
         element: (
-          <PrivateRoute url={LOGIN_URL}>
+          <PrivateRoute url={Endpoints.Login}>
             <Outlet />
           </PrivateRoute>
         ),
       },
+      {
+        path: Endpoints.index,
+        element: (
+          <AuthRoute url={Endpoints.index}>
+            <Outlet />
+          </AuthRoute>
+        ),
+        children: [
+          {
+            path: Endpoints.Login,
+            element: (
+              <LoginPage
+                homeUrl={Endpoints.index}
+                registerUrl={Endpoints.Register}
+              />
+            ),
+          },
+          {
+            path: Endpoints.Register,
+            element: <RegisterPage loginUrl={Endpoints.Login} />,
+          },
+        ],
+      },
       { index: true, element: <HomePage /> },
-      { path: "login", element: <LoginPage /> },
     ],
   },
   {
-    path: "/admin",
+    path: Endpoints.Admin.index,
     children: [
       {
-        path: "",
+        path: Endpoints.Admin.index,
         element: (
           <Admin>
-            <PrivateRoute url={ADMIN_LOGIN_URL}>
+            <PrivateRoute url={Endpoints.Admin.Login}>
               <RoleBaseComponent
                 role={Roles.Admin}
                 fallback={<div>Unauthorized</div>}
@@ -59,14 +89,21 @@ const router = createBrowserRouter([
         ),
         children: [{ index: true, element: <HomePage /> }],
       },
-      { path: "login", element: <AdminLoginPage /> },
+      {
+        path: Endpoints.Admin.Login,
+        element: (
+          <AuthRoute url={Endpoints.Admin.index}>
+            <AdminLoginPage />
+          </AuthRoute>
+        ),
+      },
     ],
   },
 ]);
 
 function App() {
   return (
-    <div className="app">
+    <div className="App">
       <RouterProvider router={router} />
       <ToastModal />
     </div>

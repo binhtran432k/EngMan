@@ -16,6 +16,7 @@ function getShareOptionItems(items: ShareOpinionItem[]) {
         <Card.Body>
           <Card.Text>{item.content}</Card.Text>
           <UserIcon
+            username="a"
             firstName={item.firstName}
             lastName={item.lastName}
             size="2rem"

@@ -20,12 +20,10 @@ Content-Type: application/json
 }
 ###
 # @ref authenticateAsUserSuccess
-# @name refreshTokenAsUserSuccess
+# @name refreshTokenSuccess
 POST /auth/refresh
 Authorization: Bearer {{authenticateAsUserSuccess.token}}
 ###
-# @ref authenticateAsAdminSuccess
-# @name refreshTokenAsAdminSuccess
+# @name refreshTokenFail
 POST /auth/refresh
-Authorization: Bearer {{authenticateAsAdminSuccess.token}}
 ###

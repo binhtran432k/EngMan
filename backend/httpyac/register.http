@@ -1,0 +1,29 @@
+@defaultPassword = 12345678As
+
+###
+# @name registerUserSuccess
+POST /users
+Content-Type: application/json
+
+{
+  "username": "student2",
+  "password": "{{defaultPassword}}",
+  "firstName": "Stu",
+  "lastName": "Dent"
+}
+
+###
+# @name loginUser
+POST /auth
+Content-Type: application/json
+
+{
+  "username": "student2",
+  "password": "{{defaultPassword}}"
+}
+
+###
+# @ref loginUser
+# @name registerInstructorSuccess
+POST /users/instructor
+Authorization: Bearer {{loginUser.token}}

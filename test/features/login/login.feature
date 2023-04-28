@@ -1,10 +1,12 @@
 # language: vi
-Tính năng: Đăng nhập
+@Login
+Tính năng: Sử dụng trang Đăng nhập
 
-  Tình huống: Mở trang đăng nhập bằng đường dẫn khi chưa đăng nhập
+  Tình huống: Chuyển hướng đến trang đăng ký
     Biết tôi chưa đăng nhập vào hệ thống
-    Khi tôi mở "trang đăng nhập" bằng đường dẫn
-    Thì tôi thấy biểu mẫu đăng nhập
+    Và tôi đang ở "trang đăng nhập"
+    Khi tôi nhấn đường dẫn chuyển hướng về trang đăng ký
+    Thì tôi thấy biểu mẫu đăng ký
 
   Tình huống: Đăng nhập vào hệ thống thành công
     Biết tôi chưa đăng nhập vào hệ thống
@@ -13,14 +15,18 @@ Tính năng: Đăng nhập
     Và tôi nhấn nút đăng nhập
     Thì tôi bị chuyển hướng về "trang chủ"
 
+  Tình huống: Đăng nhập vào hệ thống thất bại với các trường không hợp lệ
+    Biết tôi chưa đăng nhập vào hệ thống
+    Và tôi đang ở "trang đăng nhập"
+    Khi tôi nhấn nút đăng nhập
+    Nhưng Tôi thấy phản hồi đăng nhập với các trường không hợp lệ như sau:
+      | Tên           | Đầu vào                          |
+      | tên đăng nhập | Tên đăng nhập bắt buộc phải điền |
+      | mật khẩu      | Mật khẩu bắt buộc phải điền      |
+
   Tình huống: Đăng nhập vào hệ thống thất bại
     Biết tôi chưa đăng nhập vào hệ thống
     Và tôi đang ở "trang đăng nhập"
     Khi tôi hiện thực đăng nhập với tài khoản "stu" và mật khẩu "12345678As"
     Và tôi nhấn nút đăng nhập
-    Thì tôi thấy lỗi xuật hiện với tin nhắn "Tài khoản hoặc mật khẩu không đúng"
-
-  Tình huống: Mở trang đăng nhập bằng đường dẫn chuyển hướng về trang chủ khi đã đăng nhập
-    Biết tôi đã đăng nhập vào hệ thống với quyền "mặc định"
-    Khi tôi mở "trang đăng nhập" bằng đường dẫn
-    Thì tôi bị chuyển hướng về "trang chủ"
+    Nhưng tôi thấy lỗi xuật hiện với tin nhắn "Tài khoản hoặc mật khẩu không đúng"

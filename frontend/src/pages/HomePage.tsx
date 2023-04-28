@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 
 function HomePage() {
   return (
-    <div className="home">
+    <div className="HomePage">
       <div className="py-5 bg-body-tertiary">
         <Container>
           <MyCarolsel />

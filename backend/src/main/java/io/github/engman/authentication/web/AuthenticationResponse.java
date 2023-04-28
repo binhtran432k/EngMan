@@ -1,6 +1,6 @@
 package io.github.engman.authentication.web;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -13,6 +13,6 @@ public class AuthenticationResponse {
 	private String username;
 	private String firstName;
 	private String lastName;
-	private List<? extends GrantedAuthority> roles;
+	private Set<? extends GrantedAuthority> roles;
 	private String token;
 }

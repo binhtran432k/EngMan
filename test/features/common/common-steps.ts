@@ -11,6 +11,7 @@ interface User {
 const PageMap: Record<string, string> = {
   "trang đăng nhập": "/login",
   "trang chủ": "/",
+  "trang đăng ký": "/register",
 } as const;
 
 const defaultPassword = "12345678As";

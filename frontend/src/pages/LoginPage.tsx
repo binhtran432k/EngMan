@@ -1,26 +1,33 @@
-import { selectCurrentUser } from "@/features/auth/authSlice";
 import LoginForm from "@/features/auth/LoginForm";
-import { useTypedSelector } from "@/hooks/store";
 import { Card } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { Navigate } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 
-const HOME_URL = "/";
+interface LoginPageProps {
+  homeUrl: string;
+  registerUrl: string;
+}
 
-function LoginPage() {
-  const { t } = useTranslation();
-  const user = useTypedSelector(selectCurrentUser);
-  return user ? (
-    <Navigate to={HOME_URL} />
-  ) : (
-    <div className="login-page">
-      <Card className="mx-auto my-5" style={{ maxWidth: "26rem" }}>
-        <Card.Header as="h5">{t("loginLabel")}</Card.Header>
-        <Card.Body>
-          <LoginForm redirect={HOME_URL} />
-        </Card.Body>
-      </Card>
-    </div>
+function LoginPage(props: LoginPageProps) {
+  const { t } = useTranslation("LoginPage");
+
+  return (
+    <Card className="LoginPage mx-auto my-5">
+      <Card.Header as="h5">{t("label")}</Card.Header>
+      <Card.Body>
+        <LoginForm redirect={props.homeUrl} />
+        <div className="text-center mt-4">
+          <span>{t("notHaveAccount")}?</span>
+          &nbsp;
+          <LinkContainer
+            to={props.registerUrl}
+            className="btnRegisterNavigationLink"
+          >
+            <a>{t("registerNow")}</a>
+          </LinkContainer>
+        </div>
+      </Card.Body>
+    </Card>
   );
 }
 

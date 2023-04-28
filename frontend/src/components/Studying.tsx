@@ -31,7 +31,7 @@ function getStudyingItems(items: StudyingItem[]) {
               {item.rate.toFixed(1)}
             </div>
             <div className="text-warning">
-              <Rating rate={item.rate} />
+              <Rating id={"StudyingItem" + i} rate={item.rate / 5} size={5} />
             </div>
             <div className="text-body-tertiary">
               ({item.totalRate.toLocaleString("en-US")})
